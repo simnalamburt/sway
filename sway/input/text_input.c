@@ -167,6 +167,10 @@ static void relay_disable_text_input(struct sway_input_method_relay *relay,
 		sway_log(SWAY_DEBUG, "Disabling text input, but input method is gone");
 		return;
 	}
+	if (text_input->input->focused_surface == NULL) {
+		sway_log(SWAY_DEBUG, "Disabling text input, but no longer focused");
+		return;
+	}
 	wlr_input_method_v2_send_deactivate(relay->input_method);
 	relay_send_im_state(relay, text_input->input);
 }
