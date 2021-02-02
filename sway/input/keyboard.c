@@ -498,7 +498,7 @@ static void handle_key_event(struct sway_keyboard *keyboard,
 					wl_resource_get_client(kb_grab->resource))) {
 				// Do not send release event to grab if the press event was not
 				// sent to grab.
-				if (event->state == WL_KEYBOARD_KEY_STATE_RELEASED) {
+				if (event->state == WLR_KEY_RELEASED) {
 					bool pressed_sent = update_shortcut_state(
 						&keyboard->state_pressed_sent, event->keycode,
 						event->state, keyinfo.keycode, 0);
